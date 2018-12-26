@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>My App</title>
+
+  <link rel="stylesheet" href="css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body style="background-color:mediumpurple;">
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with cover effect-->
+    <div class="panel panel-left panel-cover theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">_
+              <div class="title">Left Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Left panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Right Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Right panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Views/Tabs container -->
+    <div class="views tabs ios-edges">
+      <!-- Tabbar for switching views-tabs -->
+      <div class="toolbar tabbar-labels toolbar-bottom-md">
+        <div class="toolbar-inner">
+          <a href="#view-home" class="tab-link tab-link-active">
+            <i class="icon f7-icons ios-only">home</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">home_fill</i>
+            <i class="icon material-icons md-only">home</i>
+            <span class="tabbar-label">Home</span>
+          </a>
+          <a href="#view-catalog" class="tab-link">
+            <i class="icon f7-icons ios-only">list</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">list_fill</i>
+            <i class="icon material-icons md-only">view_list</i>
+            <span class="tabbar-label">Catalog</span>
+          </a>
+          <a href="#view-settings" class="tab-link">
+            <i class="icon f7-icons ios-only">settings</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
+            <i class="icon material-icons md-only">settings</i>
+            <span class="tabbar-label">Settings</span>
+          </a>
+        </div>
+      </div>
+      <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
+      <div id="view-home" class="view view-main tab tab-active">
+        <!-- Page, data-name contains page name which can be used in page callbacks -->
+        <div class="page" data-name="home">
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left">
+                <a href="#" class="link icon-only panel-open" data-panel="left">
+                  <i class="icon f7-icons ios-only">menu</i>
+                  <i class="icon material-icons md-only">menu</i>
+                </a>
+              </div>
+              <div class="title sliding">Kemans</div>
+              <div class="right">
+                <a href="#" class="link icon-only panel-open" data-panel="right">
+                  <i class="icon f7-icons ios-only">menu</i>
+                  <i class="icon material-icons md-only">menu</i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scrollable page content-->
+          <div class="page-content" style="background-color:mediumpurple;">
+            <div class="block">
+                <div style="text-align:center;color:white; font-size:21px;">Explore your deals!</div>
+            </div>
+            <div class="block block-strong">
+
+
+
+                <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="10" data-slides-per-view="auto" data-centered-slides="true" class="swiper-container swiper-init demo-swiper demo-swiper-auto">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner1.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner2.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner3.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner4.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner5.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner6.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner7.jpg" alt=""></div>
+                      <div class="swiper-slide"><img style="width:100%;" src="img/banner8.jpg" alt=""></div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                      <div class="card-content card-content-padding center row">
+                        <div class="col-50">
+                          <a href="/custom-trip/">
+                          <img style="width:50%; margin-left:25%;" class="button-round" src="img/aeroplane-icon.png" width="78px;" alt="">
+                          <a href="/custom-trip/" style="font-size:18px; margin-left: 15%; color:black;">Custom Trip</a>
+                          </a>
+                        </div>
+                        <div class="col-50">
+                          <a href="/paket-liburan/">
+                          <img style="width:50%; margin-left:17.5%;" class="button-round" src="img/backpack-icon.png" width="78px;" alt="">
+                          <a style="font-size:18px; margin-left:2.5%; color:black;">Paket Liburan</a>
+                          </a>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="block">
+            <div class="card card-outline">
+                <div class="card-header">Cari Liburan Mu</div>
+                <div class="card-content card-content-padding">
+                    <form class="list" id="my-form">
+                        <ul>
+                          <li>
+                            <div class="item-content item-input">
+                              <div class="item-inner">
+                                <div class="item-title item-label">Berapa Uangmu?</div>
+                                <div class="item-input-wrap">
+                                  <input type="text" name="duit" placeholder="Uang mu">
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="item-content">
+                              <div class="item-inner">
+                                <div class="item-title">Asuransi</div>
+                                <div class="item-after">
+                                  <label class="toggle toggle-init">
+                                    <input type="checkbox" name="toggle" value="yes"><i class="toggle-icon"></i>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </form>
+                      <div class="block block-strong row">
+                          <div class="col"><a class="button convert-form-to-data" href="#">Get Data</a></div>
+                          <div class="col"><a class="button fill-form-from-data" href="#">Fill Form</a></div>
+                        </div>
+                </div>
+                <div class="card-footer">Card Footer</div>
+              </div>
+            </div>
+
+
+
+
+            <div class="block block-strong">
+              <p>This is an example of tabs-layout application. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.</p>
+              <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
+            </div>
+
+            <div class="block-title">Navigation</div>
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="/about/" class="item-content item-link">
+                    <div class="item-inner">
+                      <div class="item-title">About</div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                    <a href="/testpage/" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Kemans</div>
+                      </div>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+
+            <div class="block-title">Modals</div>
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
+                </div>
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="block-title">Panels</div>
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill panel-open" data-panel="left">Left Panel</a>
+                </div>
+                <div class="col-50">
+                  <a href="#" class="button button-raised button-fill panel-open" data-panel="right">Right Panel</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="block-title searchbar-hide-on-search">Page Loaders & Router</div>
+            <div class="list links-list searchbar-hide-on-search">
+              <ul>
+                <li>
+                  <a href="/page-loader-template7/vladimir/123/about-me/1/?start=0&end=30#top">Template7 Page</a>
+                </li>
+                <li>
+                  <a href="/page-loader-component/vladimir/123/about-me/1/?start=0&end=30#top">Component Page</a>
+                </li>
+                <li>
+                  <a href="/load-something-that-doesnt-exist/">Default Route (404)</a>
+                </li>
+                <li>
+                  <a href="/request-and-load/user/123456/">Request Data & Load</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Catalog View -->
+      <div id="view-catalog" class="view tab">
+        <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
+      </div>
+
+      <!-- Settings View -->
+      <div id="view-settings" class="view tab">
+        <!-- Settings page will be loaded here dynamically from /settings/ route -->
+      </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="my-popup">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Popup</div>
+              <div class="right">
+                <a href="#" class="link popup-close">Close</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <p>Popup content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="my-login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div style="margin-top: 40%;" class="login-screen-title">Kemans</div>
+            <div class="list block">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Username</div>
+                    <div class="item-input-wrap">
+                      <input type="text" name="username" placeholder="Your username">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Password</div>
+                    <div class="item-input-wrap">
+                      <input type="password" name="password" placeholder="Your password">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                    <a href="#" style="align-items:center;" class="col-100 item-link list-button login-button">
+                    <button class="col-100 button button-fill button-round">Sign In</button>
+                  </a>
+                </li>
+              </ul>
+              <ul>
+                  <li>
+                      <a href="#" style="align-items:center; margin-top:2.5%;" class="col-100 item-link list-button" data-login-screen="#my-signup-screen">
+                      <button class="col-100 button button-fill button-round" data-login-screen="#my-signup-screen">Sign Up</button>
+                    </a>
+                  </li>
+              </ul>
+              <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="signup-screen" id="my-signup-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div style="margin-top: 40%;" class="signup-screen-title">Kemans</div>
+            <div class="list block">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Username</div>
+                    <div class="item-input-wrap">
+                      <input type="text" name="username" placeholder="Your username">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Password</div>
+                    <div class="item-input-wrap">
+                      <input type="password" name="password" placeholder="Your password">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">email</div>
+                    <div class="item-input-wrap">
+                      <input type="text" name="email" placeholder="Your email">
+                    </div>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                    <a href="#" style="align-items:center;" class="col-100 item-link list-button login-button">
+                    <button class="col-100 button button-fill button-round">Sign In</button>
+                  </a>
+                </li>
+              </ul>
+              <ul>
+                  <li>
+                      <a href="#" style="align-items:center; margin-top:2.5%;" class="col-100 item-link list-button login-button">
+                      <button class="col-100 button button-fill button-round">Sign Up</button>
+                    </a>
+                  </li>
+              </ul>
+              <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <!-- Cordova -->
+
+  <script src="js/cordova.js"></script>
+
+
+  <!-- Framework7 library -->
+  <script src="js/framework7.min.js"></script>
+
+  <script>
+      var app = new Framework7();
+
+var $$ = Dom7;
+
+$$('.convert-form-to-data').on('click', function(){
+  var formData = app.form.convertToData('#my-form');
+  $.getJSON('http://kemans.com/public/index.php/srcpaketwisata/'+formData.duit, function (json){
+    console.log(json);
+    
+  alert(JSON.stringify(json.data));
+  })
+});
+
+$$('.fill-form-from-data').on('click', function(){
+  var formData = {
+    'name': 'John',
+    'toggle': ['yes'],
+  }
+  app.form.fillFromData('#my-form', formData);
+});
+
+  </script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/swiper.js"></script>
+
+  <!-- <script src="js/komunitas.js"></script> -->
+    <script>
+var myApp = new Framework7({
+    init: false
+});
+
+app.on('pageInit', function (page) {
+  if (page.name === 'paket-liburan') { 
+    $.getJSON('http://sejivva.com/apikomunitas/api/komunitas', function (json) {
+      
+      console.log(json);
+          $.each(json, function (i,data) {
+              console.log(json);
+            document.getElementById('card').innerHTML +='<div class="card demo-card-header-pic"><div style="background-image:url(http://sejivva.com/'+data.image_komunitas+')" class="card-header align-items-flex-end">'+data.slug_komunitas+'</div><div class="card-content card-content-padding"><p class="date">'+data.nama_komunitas+'</p><p>'+data.deskripsi_komunitas+'</p></div><div class="card-footer"><a href="/lihat/" class="link">Like</a><a href="/lihat/'+data.id_komunitas+'/" class="link">Read more</a></div></div>';
+          });
+      });
+   }
+});
+
+  </script>
+</body>
+</html>
