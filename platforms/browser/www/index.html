@@ -182,8 +182,8 @@
                         </ul>
                       </form>
                       <div class="block block-strong row">
-                          <div class="col"><a class="button convert-form-to-data" href="#">Get Data</a></div>
-                          <div class="col"><a class="button fill-form-from-data" href="#">Fill Form</a></div>
+                          <div class="col"><a class="button convert-form-to-data">Get Data</a></div>
+                          <div class="col"><a class="button fill-form-from-data" href="/about/">Fill Form</a></div>
                         </div>
                 </div>
                 <div class="card-footer">Card Footer</div>
@@ -420,11 +420,12 @@ var $$ = Dom7;
 
 $$('.convert-form-to-data').on('click', function(){
   var formData = app.form.convertToData('#my-form');
-  $.getJSON('http://kemans.com/public/index.php/srcpaketwisata/'+formData.duit, function (json){
-    console.log(json);
+  app.router.navigate('/about/?budget='+formData.duit);
+  // $.getJSON('http://kemans.com/public/index.php/srcpaketwisata/'+formData.duit, function (json){
+  //   console.log(json);
     
-  alert(JSON.stringify(json.data));
-  })
+  // alert(JSON.stringify(json.data));
+  // })
 });
 
 $$('.fill-form-from-data').on('click', function(){
@@ -462,6 +463,15 @@ app.on('pageInit', function (page) {
               console.log(json);
             document.getElementById('card').innerHTML +='<div class="card demo-card-header-pic"><div style="background-image:url(http://sejivva.com/'+data.image_komunitas+')" class="card-header align-items-flex-end">'+data.slug_komunitas+'</div><div class="card-content card-content-padding"><p class="date">'+data.nama_komunitas+'</p><p>'+data.deskripsi_komunitas+'</p></div><div class="card-footer"><a href="/lihat/" class="link">Like</a><a href="/lihat/'+data.id_komunitas+'/" class="link">Read more</a></div></div>';
           });
+      });
+   }
+
+   if (page.name === 'about') { 
+    var budget = page.route.query.budget;
+    $.getJSON('http://kemans.com/public/index.php/srcpaketwisata/'+budget, function (json) {
+      
+      console.log(json);
+      alert(JSON.stringify(json));
       });
    }
 });
