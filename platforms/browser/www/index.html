@@ -302,12 +302,13 @@
           <div class="page-content login-screen-content">
             <div style="margin-top: 40%;" class="login-screen-title">Kemans</div>
             <div class="list block">
+                <form class="list" id="login-form">
               <ul>
                 <li class="item-content item-input">
                   <div class="item-inner">
                     <div class="item-title item-label">Username</div>
                     <div class="item-input-wrap">
-                      <input type="text" name="username" placeholder="Your username">
+                      <input type="text" name="username" id="username" placeholder="Your username">
                     </div>
                   </div>
                 </li>
@@ -315,17 +316,18 @@
                   <div class="item-inner">
                     <div class="item-title item-label">Password</div>
                     <div class="item-input-wrap">
-                      <input type="password" name="password" placeholder="Your password">
+                      <input type="password" name="password" id="password" placeholder="Your password">
                     </div>
                   </div>
                 </li>
               </ul>
+            </form>
             </div>
             <div class="list">
               <ul>
                 <li>
                     <a href="#" style="align-items:center;" class="col-100 item-link list-button login-button">
-                    <button class="col-100 button button-fill button-round">Sign In</button>
+                    <button class="col-100 button button-fill button-round" id="loginButton">Sign In</button>
                   </a>
                 </li>
               </ul>
@@ -382,7 +384,7 @@
             <div class="list">
               <ul>
                 <li>
-                    <a href="#" style="align-items:center;" class="col-100 item-link list-button login-button">
+                    <a href="" style="align-items:center;" class="col-100 item-link list-button login-button">
                     <button class="col-100 button button-fill button-round">Sign In</button>
                   </a>
                 </li>
@@ -434,6 +436,37 @@ $$('.fill-form-from-data').on('click', function(){
     'toggle': ['yes'],
   }
   app.form.fillFromData('#my-form', formData);
+});
+
+$$('#loginButton').on('click', function(){
+  var formData = app.form.convertToData('#login-form');
+  console.log(formData);
+  var data = {
+    'username':formData.username,
+    'password':formData.password,
+  }
+    $.ajax({
+      type: "POST",
+      dataType:'json',
+      url: "http://kemans.com/public/index.php/login",
+      data: data,
+      cache: false,
+      success: function(response){
+        console.log(response.token);
+        window.localStorage.setItem("token", response.token);
+
+        var token = window.localStorage.key(0);
+        // token is now equal to "token"
+        var value = window.localStorage.getItem("token");
+        // value is now equal to token value
+
+        console.log(value);
+
+      },
+      error: function(error, jqXHR, textStatus, errorThrown) {
+        console.log(error);
+      }
+    });
 });
 
   </script>
