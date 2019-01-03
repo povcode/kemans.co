@@ -222,7 +222,7 @@
             <div class="block block-strong">
               <div class="row">
                 <div class="col-50">
-                  <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">Popup</a>
+                  <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-signup-screen">SignUp</a>
                 </div>
                 <div class="col-50">
                   <a href="#" class="button button-raised button-fill login-screen-open" data-login-screen="#my-login-screen">Login Screen</a>
@@ -332,11 +332,11 @@
                 </li>
               </ul>
               <ul>
-                  <li>
-                      <a href="#" style="align-items:center; margin-top:2.5%;" class="col-100 item-link list-button" data-login-screen="#my-signup-screen">
-                      <button class="col-100 button button-fill button-round" data-login-screen="#my-signup-screen">Sign Up</button>
+                  <!-- <li>
+                      <a href="#" style="align-items:center; margin-top:2.5%;" class="col-100 item-link list-button">
+                      <button class="col-100 button button-fill button-round" id="signUpPage">Sign Up</button>
                     </a>
-                  </li>
+                  </li> -->
               </ul>
               <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
             </div>
@@ -347,12 +347,13 @@
 
 
 
-    <div class="signup-screen" id="my-signup-screen">
+    <div class="login-screen" id="my-signup-screen">
       <div class="view">
         <div class="page">
           <div class="page-content login-screen-content">
             <div style="margin-top: 40%;" class="signup-screen-title">Kemans</div>
             <div class="list block">
+                <form class="list" id="signup-form">
               <ul>
                 <li class="item-content item-input">
                   <div class="item-inner">
@@ -383,16 +384,17 @@
             </div>
             <div class="list">
               <ul>
-                <li>
+              </form>
+                <!-- <li>
                     <a href="" style="align-items:center;" class="col-100 item-link list-button login-button">
                     <button class="col-100 button button-fill button-round">Sign In</button>
                   </a>
-                </li>
+                </li> -->
               </ul>
               <ul>
                   <li>
                       <a href="#" style="align-items:center; margin-top:2.5%;" class="col-100 item-link list-button login-button">
-                      <button class="col-100 button button-fill button-round">Sign Up</button>
+                      <button class="col-100 button button-fill button-round" id="signupButton">Sign Up</button>
                     </a>
                   </li>
               </ul>
@@ -402,7 +404,6 @@
         </div>
       </div>
     </div>
-
 
 
 
@@ -419,6 +420,14 @@
       var app = new Framework7();
 
 var $$ = Dom7;
+
+var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}};
+
+
+  if( window.localStorage.getItem("token") == null){
+    app.loginScreen.open('#my-login-screen');
+  }
+ 
 
 $$('.convert-form-to-data').on('click', function(){
   var formData = app.form.convertToData('#my-form');
@@ -438,9 +447,14 @@ $$('.fill-form-from-data').on('click', function(){
   app.form.fillFromData('#my-form', formData);
 });
 
+$$('#signUpPage').on('click', function(){
+  app.loginScreen.open('#my-signup-screen');
+});
+
+
 $$('#loginButton').on('click', function(){
   var formData = app.form.convertToData('#login-form');
-  console.log(formData);
+  console.log(Base64.encode(formData.password));
   var data = {
     'username':formData.username,
     'password':formData.password,
@@ -460,6 +474,41 @@ $$('#loginButton').on('click', function(){
         var value = window.localStorage.getItem("token");
         // value is now equal to token value
 
+        console.log(value);
+
+      },
+      error: function(error, jqXHR, textStatus, errorThrown) {
+        console.log(error);
+      }
+    });
+});
+
+$$('#signupButton').on('click', function(){
+  var formData = app.form.convertToData('#signup-form');
+  console.log(Base64.encode(formData.password));
+  var pass = Base64.encode(formData.password);
+  var data = {
+    'username':formData.username,
+    'password':pass,
+    'email':formData.email,
+  }
+    $.ajax({
+      type: "POST",
+      dataType:'json',
+      url: "http://kemans.com/public/index.php/signup",
+      data: data,
+      cache: false,
+      success: function(response){
+        console.log(response.token);
+        window.localStorage.setItem("token", response.token);
+
+        var token = window.localStorage.key(0);
+        // token is now equal to "token"
+        var value = window.localStorage.getItem("token");
+        // value is now equal to token value
+
+        // Close login screen
+        app.loginScreen.close('#my-signup-screen');
         console.log(value);
 
       },

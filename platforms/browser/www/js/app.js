@@ -78,7 +78,7 @@ $$('#my-login-screen .login-button').on('click', function () {
     success: function(response){
       console.log(response);
        // Alert username and password
-      app.dialog.alert(response);
+      //app.dialog.alert(response);
     },
     error: function(error) {
       console.log(error);
