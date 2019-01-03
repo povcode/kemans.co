@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "kemans"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "kemans"
     }
   },
   "dependent_plugins": {}
